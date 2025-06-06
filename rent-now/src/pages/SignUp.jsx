@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import "../css/authentication.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     contact: "",
@@ -29,6 +30,7 @@ const SignUp = () => {
         formData
       );
       setMessage(response.data.message);
+      navigate('/login')
       setFormData({
         username: "",
         contact: "",
