@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../css/addnewpg.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const AddNewPg = () => {
   const [pgData, setPgData] = useState({
@@ -14,6 +14,7 @@ const AddNewPg = () => {
     category: "",
     rent: "",
     city: "",
+    cityInput: "", // additional state for "Other"
     address: "",
     pincode: "",
     nearestCollege: "",
@@ -23,20 +24,22 @@ const AddNewPg = () => {
 
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
+
     if (type === "file") {
       setPgData({
         ...pgData,
-        images: Array.from(files), // update images array explicitly
+        images: Array.from(files),
       });
     } else {
-      setPgData({ ...pgData, [name]: value });
+      setPgData({
+        ...pgData,
+        [name]: value,
+      });
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Validation for required fields
 
     const requiredFields = [
       "pgname",
@@ -46,8 +49,12 @@ const AddNewPg = () => {
       "city",
       "address",
     ];
+
     for (let field of requiredFields) {
-      if (!pgData[field]) {
+      if (field === "city" && pgData.city === "Other" && !pgData.cityInput) {
+        setMessage("City field cannot be empty.");
+        return;
+      } else if (!pgData[field] && field !== "city") {
         setMessage(`${field} field cannot be empty.`);
         return;
       }
@@ -55,12 +62,15 @@ const AddNewPg = () => {
 
     try {
       const formData = new FormData();
+
       for (const key in pgData) {
         if (key === "images") {
           pgData.images.forEach((file) => {
             formData.append("images", file);
           });
-        } else {
+        } else if (key === "city") {
+          formData.append("city", pgData.city === "Other" ? pgData.cityInput : pgData.city);
+        } else if (key !== "cityInput") {
           formData.append(key, pgData[key]);
         }
       }
@@ -84,6 +94,7 @@ const AddNewPg = () => {
         category: "",
         rent: "",
         city: "",
+        cityInput: "",
         address: "",
         pincode: "",
         nearestCollege: "",
@@ -99,7 +110,9 @@ const AddNewPg = () => {
     <div className="add-new-pg">
       <div className="form-heading">
         <div className="back-to-home">
-          <Link to="/"> <FontAwesomeIcon icon={faArrowLeftLong}></FontAwesomeIcon></Link>
+          <Link to="/">
+            <FontAwesomeIcon icon={faArrowLeftLong}></FontAwesomeIcon>
+          </Link>
         </div>
         <h2>Add New PG</h2>
       </div>
@@ -196,13 +209,34 @@ const AddNewPg = () => {
               <label htmlFor="city">
                 City <span className="required">*</span>
               </label>
-              <input
-                type="text"
-                name="city"
-                id="city"
-                value={pgData.city}
-                onChange={handleChange}
-              />
+              {pgData.city === "Other" ? (
+                <input
+                  type="text"
+                  name="cityInput"
+                  id="cityInput"
+                  placeholder="Enter city name"
+                  value={pgData.cityInput}
+                  onChange={handleChange}
+                />
+              ) : (
+                <select
+                  name="city"
+                  id="city"
+                  value={pgData.city}
+                  onChange={handleChange}
+                >
+                  <option value="">--Select City--</option>
+                  <option value="durg">Durg</option>
+                  <option value="bhilai">Bhilai</option>
+                  <option value="nehru nagar">Nehru Nagar</option>
+                  <option value="supela">Supela</option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value="Other">Other</option>
+                </select>
+              )}
             </div>
             <div className="input pg-address">
               <label htmlFor="address">

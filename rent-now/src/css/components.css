@@ -418,7 +418,7 @@ input.search-input::placeholder {
 /* styling for pg card  */
 .pg-card {
     width: 48%;
-    height: 250px;
+    min-height: 250px;
     border: 1px solid rgb(224, 223, 223);
     display: flex;
     padding: 20px;

@@ -9,6 +9,7 @@ import PGMainContainer from './components/PGMainContainer'
 import AddNewPg from './pages/AddNewPg'
 import Login from './pages/Login';
 import SignUp from './pages/SignUp'
+import PgFilterByCity from './pages/PgFilterByCity'
 
 
 function App() {
@@ -19,13 +20,9 @@ function App() {
         <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/addnewpg' element={<AddNewPg/>} />
-            <Route path='/collegeCard' element={<CollegeCard/>} />
-            <Route path='/pgcard' element={<PGCard/>} />
-            <Route path='/bannerSlider' element={<SliderBanner/>} />
-            <Route path='/location' element={<UserLocation/>} />
-            <Route path='/home-pg' element={<PGMainContainer/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<SignUp/>} />
+            <Route path='/filter-by-city' element={<PgFilterByCity/>} />
         </Routes>
     </BrowserRouter>
     </>
