@@ -418,7 +418,7 @@ input.search-input::placeholder {
 /* styling for pg card  */
 .pg-card {
     width: 48%;
-    min-height: 250px;
+    height: 250px;
     border: 1px solid rgb(224, 223, 223);
     display: flex;
     padding: 20px;
@@ -429,9 +429,13 @@ input.search-input::placeholder {
     position: relative;
     letter-spacing: 0.5px;
     width: 60%;
+    font-size: 14px;
 
 }
 
+.pg-details p{
+    width:100%;
+}
 .pg-details .pg-address {
     line-height: 1.5em;
     /* Line height for readability */

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/components.css";
+import { useNavigate } from "react-router-dom";
 
 const images = ["/banner-1.jpg", "/banner-2.jpg", "/banner-3.jpg"];
 const cities = ["Durg", "Bhilai", "Supela", "Nehru Nagar"];
@@ -11,6 +12,7 @@ const SliderBanner = () => {
   const [typing, setTyping] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate=useNavigate();
 
   // Image slider
   useEffect(() => {
@@ -54,7 +56,9 @@ const SliderBanner = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Searching for: ${searchTerm}`);
+    if(searchTerm.trim()){
+      navigate(`/pg-filter?search=${encodeURIComponent(searchTerm.trim())}`)
+    }
   };
 
   return (

@@ -22,7 +22,7 @@ function App() {
             <Route path='/addnewpg' element={<AddNewPg/>} />
             <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<SignUp/>} />
-            <Route path='/filter-by-city' element={<PgFilterByCity/>} />
+            <Route path="/pg-filter" element={<PgFilterByCity />} />
         </Routes>
     </BrowserRouter>
     </>

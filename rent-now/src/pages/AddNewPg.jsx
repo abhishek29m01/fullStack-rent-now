@@ -230,10 +230,9 @@ const AddNewPg = () => {
                   <option value="bhilai">Bhilai</option>
                   <option value="nehru nagar">Nehru Nagar</option>
                   <option value="supela">Supela</option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
+                  <option value="smriti nagar">Smriti Nagar</option>
+                  <option value="hudco">Hudco</option>
+                  <option value="deepak nagar">Deepak Nagar</option>
                   <option value="Other">Other</option>
                 </select>
               )}

@@ -1,20 +1,31 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const Menubar = () => {
+  const cities=[
+    'all',
+    'durg',
+    'bhilai',
+    'nehru nagar',
+    'smriti nagar',
+    'supela',
+    'hudco',
+    'deepak nagar'
+  ];
   return (
     <div className='menubar'>
-        <ul className="menu-links">
-           <li><Link>All</Link></li>
-           <li><Link>Durg</Link></li>
-           <li><Link>Bhilai</Link></li>
-           <li><Link>Smiriti Nagar</Link></li>
-           <li><Link>Nehru Nagar</Link></li>
-           <li><Link>Supela</Link></li>
-           <li><Link>All</Link></li>
-           <li><Link>All</Link></li>
-        </ul>
+       <ul className="menu-links">
+        {cities.map((city,index)=>{
+          const url=city==='all'?'/pg-filter':`/pg-filter?city=${encodeURIComponent(city)} `
+          return (
+            <li key={index}>
+              <Link to={url}>{city}</Link>
+            </li>
+          )
+        })}
+       </ul>
     </div>
   )
 }
 
 export default Menubar
+

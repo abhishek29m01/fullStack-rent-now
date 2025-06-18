@@ -102,3 +102,21 @@ padding: 0px 25px;
 outline: none;
  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
+
+.city-search-input input::placeholder{
+    text-indent: 10px;
+}
+
+.city-search-input input{
+    text-indent: 10px;
+}
+
+.filtered-pg-list{
+    display: flex;
+    flex-wrap: wrap;
+    width:95%;
+    margin:auto;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 50px;
+}
