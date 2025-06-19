@@ -19,7 +19,7 @@ function App() {
             <Route path='/login' element={<Login/>} />
             <Route path='/signup' element={<SignUp/>} />
             <Route path="/pg-filter" element={<PgFilterByCity />} />
-            <Route path="/faq" element={<FAQPage/>} />
+            <Route path="/frequently-ask-question" element={<FAQPage/>} />
         </Routes>
     </BrowserRouter>
     </>
