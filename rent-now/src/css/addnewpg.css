@@ -70,12 +70,20 @@
 }
 
 .input input,
-.input select {
+.input select{
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     border: none;
     outline: none;
     height: 30px;
     border-radius: 2px;
+}
+
+.input input{
+    text-indent: 5px;
+}
+
+.input input::placeholder{
+    text-indent: 5px;
 }
 
 .input select {
@@ -133,7 +141,7 @@
 @media only screen and (max-width:650px) {
 
     .inputs {
-        width: 90%;
+        width: 100%;
         margin: auto;
     }
 
