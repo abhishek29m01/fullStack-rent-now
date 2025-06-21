@@ -179,6 +179,63 @@
     cursor: pointer;
 }
 
+/* star rating element styling */
+
+.star-rating {
+    width: fit-content;
+    display: flex;
+    gap: 5px;
+    font-size: 24px;
+    padding: 5px 0px;
+
+}
+
+.review-box{
+    margin:20px auto;
+}
+
+.rating-and-comment{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+
+}
+.star-icon {
+    color: rgb(255, 166, 2);
+}
+
+.comment-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.review-form {
+    width: 70%;
+}
+
+.comment-submit-message {
+    margin: 10px auto;
+}
+
+.submit-review {
+    margin:20px auto;
+    border: none;
+    padding: 3px 10px;
+    outline: none;
+    background-color: rgb(255, 106, 0);
+    border-radius: 5px;
+    color: white;
+    letter-spacing: 1px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.review-section{
+    width:90%;
+    margin:auto;
+}
+
 @media only screen and (max-width:1300px) {
     .faq-page-title h2 {
         font-size: 3rem;
