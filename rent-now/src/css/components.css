@@ -500,6 +500,7 @@ input.search-input::placeholder {
 
 .location-name {
     font-size: 18px;
+    text-align: center;
 }
 
 .location-icon {

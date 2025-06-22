@@ -26,6 +26,18 @@ router.get("/getPgData", async (req, res) => {
   }
 });
 
+//route to get pg from pgID 
+
+router.get("/getPG/:id", async (req, res) => {
+  try {
+    const pg = await PgCollection.findById(req.params.id);
+    if (!pg) return res.status(404).json({ message: "PG not found" });
+    res.json(pg);
+  } catch (err) {
+    res.status(500).json({ error: "Server error", details: err.message });
+  }
+});
+
 //applied search filter options for pg-search-by-city
 router.get("/filteredPG", async (req, res) => {
   try {

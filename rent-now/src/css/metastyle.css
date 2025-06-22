@@ -198,6 +198,7 @@
     display: flex;
     flex-direction: column;
     gap:10px;
+    width:80%;
 
 }
 .star-icon {
@@ -211,7 +212,7 @@
 }
 
 .review-form {
-    width: 70%;
+    width: 50%;
 }
 
 .comment-submit-message {
@@ -233,7 +234,7 @@
 
 .review-section{
     width:90%;
-    margin:auto;
+    margin:30px auto;
 }
 
 @media only screen and (max-width:1300px) {
@@ -250,11 +251,27 @@
     .faq-page-title p {
         font-size: 1.2rem;
     }
+
+    .review-form{
+        width: 70%;
+    }
+
+    .rating-and-comment{
+        width:100%;
+    }
 }
 
 @media only screen and (max-width:850px) {
     .add-new-faq {
         width: 95%;
+    }
+
+    .review-section{
+        width:95%;
+    }
+
+    .review-form{
+        width:98%;
     }
 }
 

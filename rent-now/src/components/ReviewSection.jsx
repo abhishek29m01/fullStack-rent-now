@@ -2,24 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CommentBox from "./CommentBox";
 import ReviewList from "./ReviewList";
-const pgIds="68529dab863378be3f7a1687";
+// const pgIds="68529dab863378be3f7a1687";
 const ReviewSection = ({ pgId, userId }) => {
   const [reviews, setReviews] = useState([]);
   const fetchReviews = () => {
     axios
-      .get(`http://localhost:2001/pgReviews/${pgIds}`)
+      .get(`http://localhost:2001/pgReviews/${pgId}`)
       .then((res) => setReviews(res.data))
       .catch((err) => console.error("Review fetch failed:", err));
   };
 
-  //PG ids are hardcode must not forget to remove it with original
-//   origin- pgId
-//   hardcoded: pgIds
   useEffect(() => {
-    if (pgIds) {
+    if (pgId) {
       fetchReviews();
     }
-  }, [pgIds]);
+  }, [pgId]);
 
   return (
     <div className="review-section">

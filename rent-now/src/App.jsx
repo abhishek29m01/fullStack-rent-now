@@ -11,6 +11,7 @@ import StartRatingInput from './components/StartRatingInput';
 import CommentBox from './components/CommentBox';
 import ReviewList from './components/ReviewList';
 import ReviewSection from './components/ReviewSection';
+import PGDetails from './pages/PGDetails';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
             <Route path='/star-rating' element={<StartRatingInput/>} />
             <Route path='/comment-box' element={<CommentBox/>} />
             <Route path='/review-list' element={<ReviewList/>} />
-            <Route path='review-section' element={<ReviewSection/>} />
+            <Route path='/review-section' element={<ReviewSection/>} />
+            <Route path='/pg-details/:id' element={<PGDetails/>} />
         </Routes>
     </BrowserRouter>
     </>

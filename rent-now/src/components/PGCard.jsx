@@ -1,7 +1,13 @@
 import React from "react";
 import "../css/components.css";
+import { useNavigate } from "react-router-dom";
 
 const PGCard = ({ pg }) => {
+const navigate=useNavigate();
+
+const handleMoreDetails=()=>{
+  navigate(`/pg-details/${pg._id}`);
+};
   return (
     <div className="pg-card">
       <div className="pg-thumbnail">
@@ -16,20 +22,20 @@ const PGCard = ({ pg }) => {
           Type: <b>{pg.pgtype}</b>
         </p>
         <p className="pg-rent">Rent: ₹{pg.rent}</p>
-        <p className="pg-owner">
+        {/* <p className="pg-owner">
           Owner: <b>{pg.owner}</b>
-        </p>
+        </p> */}
         <p className="pg-contact">Contact: {pg.contact}</p>
         <p className="pg-address">
           Location: {pg.address}, {pg.city}, {pg.pincode}
         </p>
         <p className="pg-category">Category: {pg.category}</p>
-        <p className="pg-nearest-college">
+        {/* <p className="pg-nearest-college">
           Nearest College: {pg.nearestCollege}
-        </p>
+        </p> */}
         <div className="book-and-more">
           <button className="book-now">Book Now</button>
-          <button className="more-details">More Details</button>
+          <button className="more-details" onClick={handleMoreDetails}>More Details</button>
         </div>
       </div>
     </div>
