@@ -8,16 +8,37 @@ import ReviewSection from "../components/ReviewSection";
 const PGDetails = () => {
   const { id } = useParams();
   const [pg, setPg] = useState({});
+  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     axios
       .get(`http://localhost:2001/getPG/${id}`)
-      .then((res) => setPg(res.data))
+      .then((res) => {
+        setPg(res.data);
+        setImages(res.data.images);
+      })
       .catch((error) => {
         console.error("Failed to fetch PG:", error);
       });
   }, [id]);
 
+  const handlePreviousImage = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(images.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (currentIndex === images.length - 1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+  // console.log(images);
 
   if (!pg) return <p>Loading PG details...</p>;
 
@@ -26,8 +47,21 @@ const PGDetails = () => {
       <Navbar />
       <div className="pg-card-details">
         <div className="pg-thumbnail-details">
+          <div
+            className="arrow-buttons previous-button"
+            onClick={handlePreviousImage}
+          >
+            &#129144;
+          </div>
+          <div className="arrow-buttons next-button" onClick={handleNextImage}>
+            &#129146;
+          </div>
+
           <div className="img">
-            {/* <img src={`http://localhost:2001/${pg.images[0]}`} alt="PG" /> */}
+            <img
+              src={`http://localhost:2001/${images[currentIndex]}`}
+              alt="PG"
+            />
           </div>
         </div>
         <div className="pg-details-details">
@@ -42,7 +76,7 @@ const PGDetails = () => {
           </p>
           <p className="pg-contact">Contact: {pg.contact}</p>
           <p className="pg-address">
-            Location: {pg.address},  {pg.pincode}
+            Location: {pg.address}, {pg.pincode}
           </p>
           <p className="pg-address">City: {pg.city}</p>
           <p className="pg-category">Category: {pg.category}</p>
@@ -56,7 +90,7 @@ const PGDetails = () => {
       </div>
 
       {/* rating review  */}
-      <ReviewSection pgId={id} userId={""} />
+      <ReviewSection pgId={id} userId={localStorage.getItem("userId")} />
     </div>
   );
 };

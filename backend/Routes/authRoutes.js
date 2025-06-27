@@ -66,6 +66,7 @@ router.post("/login", async (req, res) => {
 
     return res.status(200).json({
       message: "Login successfull",
+      userData:user.id,
       token: "Not applied yet.",
     });
   } catch (error) {

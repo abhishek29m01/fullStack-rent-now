@@ -13,22 +13,20 @@ const CommentBox = ({ pgId, userId, onReviewSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!userId) {
+      alert("Please log in to submit a review.");
+      navigate("/login");
+      return;
+    }
     setMessage("Submitted");
     setError("");
 
-    setTimeout(()=>{
-        setMessage("");
-        setError("")
-    },2000)
-    // if (!userId) {
-    //   alert("Please log in to submit a review.");
-    //   navigate("/login");
-    //   return;
-    // } implementation after integration jwt.
+    setTimeout(() => {
+      setMessage("");
+      setError("");
+    }, 2000);
 
-    //post comment
-
-    // will continue after pg more details and jwt 
+    // will continue after pg more details and jwt
     axios
       .post("http://localhost:2001/addReviews", {
         pgId,
@@ -40,7 +38,7 @@ const CommentBox = ({ pgId, userId, onReviewSubmit }) => {
         setMessage("Review submitted succefully.");
         setReview("");
         setRating(0);
-        onReviewSubmit(); //referesh list 
+        onReviewSubmit(); //referesh list
         console.log(res.data); //debugging
       })
       .catch((error) => {

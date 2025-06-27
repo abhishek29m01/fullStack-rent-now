@@ -7,6 +7,7 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [userId, setUserId] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -27,6 +28,10 @@ const SignUp = () => {
         "http://localhost:2001/login",
         formData
       );
+      const userIdFromServer = response.data.userData;
+      setUserId(userIdFromServer);
+      localStorage.setItem("userId", userIdFromServer);
+
       if (response.status === 200) {
         navigate("/addnewpg");
       }
