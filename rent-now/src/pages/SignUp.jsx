@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import "../css/authentication.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     contact: "",
     email: "",
     newPassword: "",
     confirmPassword: "",
+    userType: "select", // ✅ Added initial value
   });
 
   const [message, setMessage] = useState("");
@@ -29,16 +31,22 @@ const SignUp = () => {
         "http://localhost:2001/signup",
         formData
       );
+      navigate("/verify-otp"); // here because page load before backend to send mail, to ensure registration not stuck.
+      if (response.status === 200) {
+        localStorage.setItem("pendingEmail", formData.email);
+        // navigate("/verify-otp");
+      }
+
       setMessage(response.data.message);
-      navigate('/login')
       setFormData({
         username: "",
         contact: "",
         email: "",
         newPassword: "",
         confirmPassword: "",
-        userType: "",
+        userType: "select", // ✅ Reset after submission
       });
+
       setTimeout(() => {
         setMessage("");
       }, 5000);
@@ -97,7 +105,12 @@ const SignUp = () => {
                 <label htmlFor="">
                   Select User Type <span className="required">*</span>
                 </label>
-                <select name="userType" id="userType" onChange={handleChange}>
+                <select
+                  name="userType"
+                  id="userType"
+                  value={formData.userType} // ✅ controlled input
+                  onChange={handleChange}
+                >
                   <option value="select">--select Role--</option>
                   <option value="owner">Room Owner</option>
                   <option value="student">Student</option>
@@ -117,6 +130,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
             </div>
+
             <div className="auth-input">
               <label htmlFor="">
                 New password <span className="required">*</span>
@@ -130,6 +144,7 @@ const SignUp = () => {
               />
               <div className="toggle-password"></div>
             </div>
+
             <div className="auth-input">
               <label htmlFor="">
                 Confirm password <span className="required">*</span>
@@ -143,14 +158,16 @@ const SignUp = () => {
               />
             </div>
           </div>
+
           <div className="message">{message}</div>
           <button type="submit" className="submit-button">
             Submit
           </button>
         </form>
+
         <div className="toggle-form">
           <p>
-            already have an account? <Link to="/login">Login</Link>{" "}
+            already have an account? <Link to="/login">Login</Link>
           </p>
         </div>
       </div>

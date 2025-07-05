@@ -7,9 +7,26 @@ import ReviewSection from "../components/ReviewSection";
 
 const PGDetails = () => {
   const { id } = useParams();
+  const [userId,setUserId]=useState('');
   const [pg, setPg] = useState({});
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // getting user id
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    axios.get("http://localhost:2001/user-info", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res)=>{
+      setUserId(res.data._id)
+      
+    })
+  },[]);
 
   useEffect(() => {
     axios
@@ -90,7 +107,7 @@ const PGDetails = () => {
       </div>
 
       {/* rating review  */}
-      <ReviewSection pgId={id} userId={localStorage.getItem("userId")} />
+      <ReviewSection pgId={id} userId={userId} />
     </div>
   );
 };

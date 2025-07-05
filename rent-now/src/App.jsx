@@ -12,6 +12,8 @@ import CommentBox from './components/CommentBox';
 import ReviewList from './components/ReviewList';
 import ReviewSection from './components/ReviewSection';
 import PGDetails from './pages/PGDetails';
+import OwnerDashboard from './pages/OwnerDashboard';
+import AuthOTP from './pages/AuthOTP';
 
 
 function App() {
@@ -27,11 +29,10 @@ function App() {
             <Route path="/pg-filter" element={<PgFilterByCity />} />
             <Route path="/frequently-ask-question" element={<FAQPage/>} />
             <Route path="/add-faq" element={<AddFAQ/>} />
-            <Route path='/star-rating' element={<StartRatingInput/>} />
-            <Route path='/comment-box' element={<CommentBox/>} />
-            <Route path='/review-list' element={<ReviewList/>} />
-            <Route path='/review-section' element={<ReviewSection/>} />
             <Route path='/pg-details/:id' element={<PGDetails/>} />
+            <Route path='/pg-owner-dashboard' element={<OwnerDashboard/>} />
+            <Route path='/verify-otp' element={<AuthOTP/>} />
+            <Route path='/pgEdit/update/:id' element={<AddNewPg isEdit={true} />} />
         </Routes>
     </BrowserRouter>
     </>

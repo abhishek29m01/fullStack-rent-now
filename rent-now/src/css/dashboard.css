@@ -1,0 +1,363 @@
+.dashboard-navbar {
+    background: #5c5a5a;
+    background: linear-gradient(90deg, rgb(113, 113, 113) 0%, rgb(52, 53, 52) 0%, rgb(49, 49, 48) 100%);
+    display: flex;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 2rem;
+}
+
+.dashboard-brand {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+}
+
+.dashboard-brand .hamburger {
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.dashboard-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-user-icon {
+    height: 50px;
+    background-color: rgb(249, 249, 249);
+    width: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: rgb(255, 106, 0);
+}
+
+.dashboard-user-name {
+    color: white;
+    font-size: 18px;
+    letter-spacing: .5px;
+}
+
+.dashboard-container {
+    width: 100%;
+    height: 88vh;
+    background-color: rgb(248, 247, 247);
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 10px;
+    margin: 1px auto;
+    overflow: hidden;
+}
+
+.dashboard-menu {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.dashboard-header {
+    background-color: rgb(255, 106, 0);
+    color: white;
+    border-radius: 5px;
+    height: 35px;
+    width: 90%;
+    font-size: 18px;
+    margin: 20px auto;
+    /* padding:5px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.dashboard-menu-links {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.dashboard-menu-links a {
+    display: flex;
+    gap: 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(243, 213, 198, 0.116);
+}
+
+.menu-icon-color {
+    color: rgb(255, 106, 0);
+    font-size: 17px;
+}
+
+.notification {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+.notification-icon {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-container-content {
+    background-color: rgb(242, 240, 240);
+    width: 80%;
+    overflow: auto;
+}
+
+.dashbaord-statistics-card {
+    width: 300px;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.dashboard-stats-cards {
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.dsc-heading,
+.dsc-count {
+    text-align: center;
+}
+
+.dsc-heading {
+    /* text-transform: uppercase; */
+    font-size: 18px;
+    letter-spacing: 1px;
+    opacity: .8;
+}
+
+.dsc-count {
+    margin: 5px auto;
+    font-size: 36px;
+}
+
+.dsc-blue {
+    background-color: rgba(146, 119, 245, 0.221);
+    color: rgb(2, 2, 131);
+}
+
+.dsc-green {
+    background-color: rgba(28, 191, 28, 0.555);
+    color: rgb(1, 55, 1);
+}
+
+.dsc-yellow {
+    background-color: rgba(124, 124, 46, 0.313);
+    color: rgb(64, 64, 0);
+}
+
+.admin-pg-functionality {
+    height: 100px;
+    background-color: white;
+    margin-top: 5px;
+    /* padding-top:30px; */
+    display: flex;
+    gap: 20px;
+    padding: 30px 5%;
+}
+
+.admin-pg-functionality a {
+    text-decoration: none;
+    /* cursor: pointer; */
+}
+
+.f-button {
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+.icon-green {
+    color: green;
+}
+
+.icon-red {
+    color: red;
+}
+
+.icon-blue {
+    color: rgb(0, 157, 255);
+}
+
+.icon-yellow {
+    color: rgb(147, 147, 1);
+}
+
+.my-pg-details {
+    background-color: white;
+    margin-top: 5px;
+    overflow: auto;
+    ;
+}
+
+.my-pg-information {
+    width: 90%;
+    background-color: rgba(243, 241, 241, 0.662);
+    margin: 20px auto;
+}
+
+.latest-pg-booking {
+    background-color: white;
+    margin: 5px auto;
+    overflow: auto;
+}
+
+.latest-pg-booking h3{
+    width:90%;
+    margin:20px auto;
+}
+
+.latest-booking-table{
+    width:90%;
+    margin:20px auto;
+    /* background-color: green; */
+}
+.my-pg-heading {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.my-pg-information {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #030000;
+}
+
+.my-pg-information p {
+    margin: 0;
+    padding: 8px;
+
+}
+
+.lastest-booking-table {
+    width: 100%;
+}
+
+.latest-bookings {
+    width: 90%;
+    margin: auto;
+}
+
+.latest-bookings,
+tr,
+td,
+th {
+    border: 1px solid rgb(123, 207, 153);
+    border-collapse: collapse;
+    text-indent: 20px;
+
+}
+
+/* pg delete dialogue design  */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.dialog-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-btn {
+  background-color: red;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: black;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+
+@media only screen and (max-width:1250px) {
+    .dashboard-menu {
+        width: 25%;
+    }
+
+    .dashboard-container-content {
+        width: 75%;
+    }
+}
+
+/* Webkit-based browsers (Chrome, Edge, Safari) */
+.dashboard-container-content::-webkit-scrollbar {
+    width: 6px;
+    /* Thin scrollbar */
+}
+
+.dashboard-container-content::-webkit-scrollbar-thumb {
+    background-color: #999;
+    /* Scrollbar color */
+    border-radius: 3px;
+}
+
+.dashboard-container-content::-webkit-scrollbar-track {
+    background: transparent;
+}

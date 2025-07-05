@@ -7,7 +7,6 @@
 }
 
 .faq-page-title {
-    /* background-color: red; */
     width: 45%;
     margin: 50px auto;
 }
@@ -16,7 +15,7 @@
     font-size: 4rem;
     font-weight: 800;
     color: #ff6a00;
-    /* line-height: 4rem; */
+   
 }
 
 .faq-page-title p {
@@ -35,7 +34,7 @@
 .faq-banner img {
     width: 100%;
     border-radius: 5px;
-    /* height: 400px; */
+   
 }
 
 .faqs-container {
@@ -49,7 +48,6 @@
 .faq-answer {
     cursor: pointer;
     width: 100%;
-    /* margin:auto; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,7 +63,6 @@
 }
 
 .faq-answer {
-    /* background-color: rgb(253, 252, 252); */
     padding: 2px;
     width: 100%;
 }
@@ -111,8 +108,6 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    /* background-color: rgb(255, 106, 0); */
-    /* color: white; */
 }
 
 .back-to-home a {
@@ -135,8 +130,6 @@
 }
 
 .m-10 {
-    /* width: 90%;
-    margin: auto; */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -156,7 +149,6 @@
     box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     border: none;
     outline: none;
-    /* height: 30px; */
     border-radius: 2px;
 }
 
@@ -190,17 +182,18 @@
 
 }
 
-.review-box{
-    margin:20px auto;
+.review-box {
+    margin: 20px auto;
 }
 
-.rating-and-comment{
+.rating-and-comment {
     display: flex;
     flex-direction: column;
-    gap:10px;
-    width:80%;
+    gap: 10px;
+    width: 80%;
 
 }
+
 .star-icon {
     color: rgb(255, 166, 2);
 }
@@ -220,7 +213,7 @@
 }
 
 .submit-review {
-    margin:20px auto;
+    margin: 20px auto;
     border: none;
     padding: 3px 10px;
     outline: none;
@@ -232,9 +225,9 @@
     cursor: pointer;
 }
 
-.review-section{
-    width:90%;
-    margin:30px auto;
+.review-section {
+    width: 90%;
+    margin: 30px auto;
 }
 
 @media only screen and (max-width:1300px) {
@@ -252,12 +245,12 @@
         font-size: 1.2rem;
     }
 
-    .review-form{
+    .review-form {
         width: 70%;
     }
 
-    .rating-and-comment{
-        width:100%;
+    .rating-and-comment {
+        width: 100%;
     }
 }
 
@@ -266,12 +259,12 @@
         width: 95%;
     }
 
-    .review-section{
-        width:95%;
+    .review-section {
+        width: 95%;
     }
 
-    .review-form{
-        width:98%;
+    .review-form {
+        width: 98%;
     }
 }
 
@@ -321,8 +314,8 @@
     }
 }
 
-@media only screen and (max-width:450px){
-    .rating-and-comment{
-        margin-bottom:20px;
+@media only screen and (max-width:450px) {
+    .rating-and-comment {
+        margin-bottom: 20px;
     }
 }

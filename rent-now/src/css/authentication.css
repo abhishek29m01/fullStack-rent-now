@@ -127,11 +127,14 @@
     margin-top:20px;
 }
 
-.toggle-form {
+.toggle-form ,.resend-otp{
     width: 85%;
     margin:10px auto;
 }
 
+.resend-otp{
+    color:blue;
+}
 .user-contact {
     width: 60%;
 }
@@ -139,6 +142,17 @@
 .user-type {
     width: 30%;
 }
+
+.request-new-otp-button{
+    padding:2px 5px;
+    border-radius: 10px;
+    outline:none;
+    border:none;
+    cursor: pointer;
+    background-color: rgb(191, 189, 187);
+}
+
+
 
 @media only screen and (max-width:650px){
     .auth-page{

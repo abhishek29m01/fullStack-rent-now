@@ -7,7 +7,7 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [userId, setUserId] = useState("");
+  // const [userId, setUserId] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,20 +28,29 @@ const SignUp = () => {
         "http://localhost:2001/login",
         formData
       );
-      const userIdFromServer = response.data.userData;
-      setUserId(userIdFromServer);
-      localStorage.setItem("userId", userIdFromServer);
+      console.log(response);
+      const { token, userType } =response.data;
+      console.log(token,userType)
 
-      if (response.status === 200) {
-        navigate("/addnewpg");
+      if (token) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("userType", userType);
+
+        if (userType === "owner") {
+          navigate("/pg-owner-dashboard");
+        } else {
+          navigate("/");
+        }
+      } else {
+        setMessage("Login failed. Please try again.");
       }
     } catch (err) {
-      if (err.response) {
+      if (err.response && err.response.data?.message) {
         setMessage(err.response.data.message);
       } else {
         setMessage("Network or server error.");
       }
-    }
+    } 
   };
 
   return (

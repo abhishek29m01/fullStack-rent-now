@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../css/addnewpg.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 
-const AddNewPg = () => {
+const AddNewPg = ({ isEdit = false, onSubmit }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [pgData, setPgData] = useState({
     pgname: "",
     pgtype: "",
@@ -38,6 +41,35 @@ const AddNewPg = () => {
     }
   };
 
+  //for Edit purpose
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isEdit && id) {
+        try {
+          const res = await axios.get(`http://localhost:2001/getPgData/${id}`);
+          setPgData({
+            pgname: res.data.pgname || "",
+            pgtype: res.data.pgtype || "",
+            owner: res.data.owner || "",
+            contact: res.data.contact || "",
+            category: res.data.category || "",
+            rent: res.data.rent || "",
+            city: res.data.city || "",
+            cityInput: "", // additional state for "Other"
+            address: res.data.address || "",
+            pincode: res.data.pincode || "",
+            nearestCollege: res.data.nearestCollege || "",
+            images:[],
+          });
+        } catch (error) {
+          console.error("Error fetching from data:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [isEdit, id]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -60,6 +92,8 @@ const AddNewPg = () => {
       }
     }
 
+    const token = localStorage.getItem("token");
+
     try {
       const formData = new FormData();
 
@@ -69,37 +103,57 @@ const AddNewPg = () => {
             formData.append("images", file);
           });
         } else if (key === "city") {
-          formData.append("city", pgData.city === "Other" ? pgData.cityInput : pgData.city);
+          formData.append(
+            "city",
+            pgData.city === "Other" ? pgData.cityInput : pgData.city
+          );
         } else if (key !== "cityInput") {
           formData.append(key, pgData[key]);
         }
       }
 
-      const response = await axios.post(
-        "http://localhost:2001/addpg",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      if (isEdit && id) {
+        const res = await axios.put(
+          `http://localhost:2001/updatePgData/${id}`,
+          formData,
+        );
+        setMessage("Form Updated Successfully.");
+        if (onSubmit) onSubmit(res.data);
 
-      setMessage(response.data.message || "PG added successfully!");
-      setPgData({
-        pgname: "",
-        pgtype: "",
-        owner: "",
-        contact: "",
-        category: "",
-        rent: "",
-        city: "",
-        cityInput: "",
-        address: "",
-        pincode: "",
-        nearestCollege: "",
-        images: [],
-      });
+        setTimeout(() => {
+          setMessage("");
+          navigate("/pg-owner-dashboard");
+        }, 1500);
+      } else {
+        const response = await axios.post(
+          "http://localhost:2001/addpg",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${token}`,
+            },
+            timeout:5000
+          },
+        
+        );
+
+        setMessage(response.data.message || "PG added successfully!");
+        setPgData({
+          pgname: "",
+          pgtype: "",
+          owner: "",
+          contact: "",
+          category: "",
+          rent: "",
+          city: "",
+          cityInput: "",
+          address: "",
+          pincode: "",
+          nearestCollege: "",
+          images: [],
+        });
+      }
     } catch (error) {
       console.error(error);
       setMessage("Error submitting form.");
@@ -290,7 +344,7 @@ const AddNewPg = () => {
 
         <div>{message}</div>
         <button type="submit" className="add-pg-button">
-          Submit
+          {isEdit?"Update":"Submit"}
         </button>
       </form>
     </div>
